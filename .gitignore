@@ -44,6 +44,4 @@ app.*.map.json
 /android/app/profile
 /android/app/release
 
-
-
-G:\Programming Training\smart_workspace_manager_frontend\lib\services\config.dart
+lib\services\config.dart
