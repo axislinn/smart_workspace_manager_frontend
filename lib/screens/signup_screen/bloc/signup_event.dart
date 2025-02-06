@@ -22,7 +22,7 @@ class SignUpAdminEvent extends SignUpEvent {
     required this.name,
     required this.email,
     required this.password,
-    required this.phoneNumber,
+    required this.phoneNumber, 
   });
 
   @override

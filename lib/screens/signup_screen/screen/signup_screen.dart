@@ -1,13 +1,19 @@
 import 'package:smart_workspace_manager_frontend/screens/signup_screen/utils/index.dart';
 
+class SignUpScreen extends StatefulWidget {
+  @override
+  _SignUpScreenState createState() => _SignUpScreenState();
+}
 
-class SignUpScreen extends StatelessWidget {
+class _SignUpScreenState extends State<SignUpScreen> {
   final TextEditingController emailController = TextEditingController();
   final TextEditingController passwordController = TextEditingController();
-  final TextEditingController roleController = TextEditingController();
   final TextEditingController nameController = TextEditingController();
   final TextEditingController phoneNumberController = TextEditingController();
   final TextEditingController departmentController = TextEditingController();
+
+  final List<String> roles = ['Admin', 'Employee'];
+  String? selectedRole;
 
   @override
   Widget build(BuildContext context) {
@@ -30,8 +36,6 @@ class SignUpScreen extends StatelessWidget {
     );
   }
 
-
-  // Method to build the sign-up form
   Widget _buildSignUpForm(BuildContext context) {
     return Padding(
       padding: const EdgeInsets.all(16.0),
@@ -43,7 +47,7 @@ class SignUpScreen extends StatelessWidget {
           _buildPhField(),
           _buildPasswordField(),
           _buildRoleDropdown(),
-          _buildDepField(),
+          if (selectedRole == 'Employee') _buildDepField(),
           SizedBox(height: 20),
           _buildSignUpButton(context),
           SizedBox(height: 10),
@@ -53,35 +57,22 @@ class SignUpScreen extends StatelessWidget {
     );
   }
 
-  // Method to build the email input field
   Widget _buildEmailField() {
     return TextField(
       controller: emailController,
-      decoration: InputDecoration(
-        labelText: 'Email',
-      ),
+      decoration: InputDecoration(labelText: 'Email'),
       style: TextStyle(color: Colors.black),
     );
   }
 
-  // Method to build the password input field
   Widget _buildPasswordField() {
     return TextField(
       controller: passwordController,
-      decoration: InputDecoration(
-        labelText: 'Password',
-      ),
+      decoration: InputDecoration(labelText: 'Password'),
       obscureText: true,
       style: TextStyle(color: Colors.black),
     );
   }
-
-
-  // Method to build the role input field
-  final List<String> roles = ['Admin', 'Employee'];
-  String? selectedRole;
-
-  SignUpScreen({super.key});
 
   Widget _buildRoleDropdown() {
     return DropdownButtonFormField<String>(
@@ -94,62 +85,64 @@ class SignUpScreen extends StatelessWidget {
         );
       }).toList(),
       onChanged: (value) {
-        selectedRole = value;
+        setState(() {
+          selectedRole = value;
+        });
       },
     );
   }
 
-  // Method to build the name input field
-    Widget _buildNameField() {
+  Widget _buildNameField() {
     return TextField(
       controller: nameController,
-      decoration: InputDecoration(
-        labelText: 'Name',
-      ),
-      obscureText: true,
+      decoration: InputDecoration(labelText: 'Name'),
       style: TextStyle(color: Colors.black),
     );
   }
 
-  // Method to build the ph no input field
-    Widget _buildPhField() {
+  Widget _buildPhField() {
     return TextField(
       controller: phoneNumberController,
-      decoration: InputDecoration(
-        labelText: 'Phone Number',
-      ),
-      obscureText: true,
+      decoration: InputDecoration(labelText: 'Phone Number'),
       style: TextStyle(color: Colors.black),
     );
   }
 
-  // Method to build the depertment input field
-    Widget _buildDepField() {
+  Widget _buildDepField() {
     return TextField(
       controller: departmentController,
-      decoration: InputDecoration(
-        labelText: 'Department',
-      ),
-      obscureText: true,
+      decoration: InputDecoration(labelText: 'Department'),
       style: TextStyle(color: Colors.black),
     );
   }
 
- 
-  // Method to build the sign-up button
   Widget _buildSignUpButton(BuildContext context) {
     return ElevatedButton(
       onPressed: () {
         final email = emailController.text.trim();
         final password = passwordController.text.trim();
+        final name = nameController.text.trim();
+        final phoneNumber = phoneNumberController.text.trim();
+        final department = departmentController.text.trim();
 
-        if (roleController.text.trim().toLowerCase() == 'admin') {
-          context.read<LoginBloc>().add(
-            LoginAdminEvent(email: email, password: password),
+        if (selectedRole == 'Admin') {
+          context.read<SignUpBloc>().add(
+            SignUpAdminEvent(
+              name: name,
+              email: email,
+              password: password,
+              phoneNumber: phoneNumber,
+            ),
           );
-        } else {
-          context.read<LoginBloc>().add(
-            LoginEmployeeEvent(email: email, password: password),
+        } else if (selectedRole == 'Employee') {
+          context.read<SignUpBloc>().add(
+            SignUpEmployeeEvent(
+              name: name,
+              email: email,
+              password: password,
+              phoneNumber: phoneNumber,
+              department: department,
+            ),
           );
         }
       },
@@ -157,7 +150,6 @@ class SignUpScreen extends StatelessWidget {
     );
   }
 
-  // Method to build the redirect button to login
   Widget _buildLoginRedirectButton(BuildContext context) {
     return TextButton(
       onPressed: () {
@@ -167,10 +159,10 @@ class SignUpScreen extends StatelessWidget {
     );
   }
 
-  // Method to show error message
   void _showErrorMessage(BuildContext context, String error) {
     ScaffoldMessenger.of(context).showSnackBar(
       SnackBar(content: Text(error)),
     );
+    print(error);
   }
 }

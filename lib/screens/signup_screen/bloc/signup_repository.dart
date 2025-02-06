@@ -3,7 +3,7 @@ import 'package:http/http.dart' as http;
 import 'package:smart_workspace_manager_frontend/screens/login_screen/utils/index.dart';
 
 class SignUpRepository {
-  final String baseUrl = Url;
+  final String baseUrl = apiUrl;
 
   SignUpRepository();
 
@@ -55,9 +55,9 @@ class SignUpRepository {
     );
 
     if (response.statusCode == 201) {
-      return 'Employee sign-up successful';
-    } else {
-      throw Exception(jsonDecode(response.body)['message']);
-    }
+  return 'Sign-up successful';
+} else {
+  throw Exception('Error: ${response.statusCode} - ${jsonDecode(response.body)['message']}');
+}
   }
 }

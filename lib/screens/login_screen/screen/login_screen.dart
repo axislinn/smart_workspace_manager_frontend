@@ -51,7 +51,7 @@ class LoginScreen extends StatelessWidget {
       decoration: InputDecoration(
         labelText: 'Email',
       ),
-      style: TextStyle(color: Colors.grey.shade600),
+      style: TextStyle(color: Colors.black),
     );
   }
 
@@ -63,7 +63,7 @@ class LoginScreen extends StatelessWidget {
         labelText: 'Password',
       ),
       obscureText: true,
-      style: TextStyle(color: Colors.grey.shade100),
+      style: TextStyle(color: Colors.black),
     );
   }
 
@@ -106,5 +106,6 @@ class LoginScreen extends StatelessWidget {
     ScaffoldMessenger.of(context).showSnackBar(
       SnackBar(content: Text(error)),
     );
+    print(error);
   }
 }

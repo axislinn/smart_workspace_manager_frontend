@@ -3,7 +3,7 @@ import 'package:smart_workspace_manager_frontend/screens/login_screen/utils/inde
 
 // login_repository.dart
 class LoginRepository {
-  final String baseUrl = Url;
+  final String baseUrl = apiUrl;
 
   LoginRepository();
 
