@@ -11,9 +11,8 @@ class SignUpLoading extends SignUpState {}
 
 class SignUpSuccess extends SignUpState {
   final String message;
-  final String token;
-  
-  SignUpSuccess(this.message, this.token);
+
+  SignUpSuccess(this.message);
 
   @override
   List<Object?> get props => [message];

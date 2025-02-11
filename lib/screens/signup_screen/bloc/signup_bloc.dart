@@ -19,7 +19,7 @@ class SignUpBloc extends Bloc<SignUpEvent, SignUpState> {
         password: event.password,
         phoneNumber: event.phoneNumber,
       );
-      emit(SignUpSuccess(message, '')); // Add token
+      emit(SignUpSuccess(message));
     } catch (e) {
       emit(SignUpFailure(e.toString()));
     }
@@ -36,7 +36,7 @@ class SignUpBloc extends Bloc<SignUpEvent, SignUpState> {
         department: event.department,
         phoneNumber: event.phoneNumber,
       );
-      emit(SignUpSuccess(message, '')); // Add token
+      emit(SignUpSuccess(message));
     } catch (e) {
       emit(SignUpFailure(e.toString()));
     }
