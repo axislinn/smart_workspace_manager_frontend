@@ -1,3 +1,5 @@
+import 'package:smart_workspace_manager_frontend/screens/admin_home/screen/admin_home.dart';
+import 'package:smart_workspace_manager_frontend/screens/employee_home/screen/employee_home.dart';
 import 'package:smart_workspace_manager_frontend/screens/login_screen/screen/login_screen.dart';
 import 'package:smart_workspace_manager_frontend/screens/signup_screen/screen/signup_screen.dart';
 import 'package:smart_workspace_manager_frontend/screens/signup_screen/utils/index.dart';
@@ -5,6 +7,7 @@ import 'package:smart_workspace_manager_frontend/screens/splash_screen/screen/sp
 
 Route<dynamic> generateRoute(RouteSettings settings) {
   switch (settings.name) {
+
     case splash:
       return MaterialPageRoute(builder: (_) => SplashScreen());
 
@@ -25,6 +28,12 @@ Route<dynamic> generateRoute(RouteSettings settings) {
             repository: SignUpRepository()),
           child: SignUpScreen(),
               ));
+
+      case adminHome:
+    return MaterialPageRoute(builder: (_) => AdminHome());
+
+      case employeeHome:
+    return MaterialPageRoute(builder: (_) => EmployeeHome());
 
     default:
       return MaterialPageRoute(

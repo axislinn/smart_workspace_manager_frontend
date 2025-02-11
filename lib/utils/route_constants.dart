@@ -1,3 +1,5 @@
 const String splash = 'splash';
 const String login = 'login';
-const String signUp = "signUp";
+const String signUp = 'signUp';
+const String adminHome = 'adminHome';
+const String employeeHome = 'employeeHome';
