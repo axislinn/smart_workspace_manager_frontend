@@ -6,3 +6,4 @@ export 'package:smart_workspace_manager_frontend/screens/signup_screen/bloc/sign
 export 'package:smart_workspace_manager_frontend/screens/splash_screen/utils/index.dart';
 export 'package:smart_workspace_manager_frontend/screens/signup_screen/bloc/signup_event.dart';
 export 'package:smart_workspace_manager_frontend/screens/signup_screen/bloc/signup_repository.dart';
+export 'package:flutter_secure_storage/flutter_secure_storage.dart';
