@@ -1,6 +1,3 @@
-import 'package:smart_workspace_manager_frontend/screens/login_screen/bloc/login_bloc.dart';
-import 'package:smart_workspace_manager_frontend/screens/login_screen/bloc/login_event.dart';
-import 'package:smart_workspace_manager_frontend/screens/login_screen/utils/index.dart';
 import 'package:smart_workspace_manager_frontend/screens/splash_screen/utils/index.dart';
 
 class SplashScreen extends StatefulWidget {

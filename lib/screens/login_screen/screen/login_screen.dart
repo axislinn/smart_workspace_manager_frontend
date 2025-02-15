@@ -1,9 +1,11 @@
 import 'package:smart_workspace_manager_frontend/screens/login_screen/utils/index.dart';
 
+
 class LoginScreen extends StatelessWidget {
   final TextEditingController emailController = TextEditingController();
   final TextEditingController passwordController = TextEditingController();
-  final TextEditingController roleController = TextEditingController();
+
+  LoginScreen({super.key});
 
   @override
   Widget build(BuildContext context) {
@@ -11,7 +13,13 @@ class LoginScreen extends StatelessWidget {
       body: BlocConsumer<LoginBloc, LoginState>(
         listener: (context, state) {
           if (state is LoginSuccess) {
-            Navigator.pushReplacementNamed(context, '/home');
+            final user = state.user;
+            // Navigate based on role after successful login
+            if (user.role == 'admin') {
+              Navigator.pushReplacementNamed(context, adminHome);
+            } else if (user.role == 'employee') {
+              Navigator.pushReplacementNamed(context, employeeHome);
+            }
           } else if (state is LoginFailure) {
             _showErrorMessage(context, state.error);
           }
@@ -26,7 +34,7 @@ class LoginScreen extends StatelessWidget {
     );
   }
 
- // Method to build the login form
+  // Method to build the login form
   Widget _buildLoginForm(BuildContext context) {
     return Padding(
       padding: const EdgeInsets.all(16.0),
@@ -73,15 +81,17 @@ class LoginScreen extends StatelessWidget {
       onPressed: () {
         final email = emailController.text.trim();
         final password = passwordController.text.trim();
-
-        if (roleController.text.trim().toLowerCase() == 'admin') {
+        
+        if(email.isNotEmpty && password.isNotEmpty){
           context.read<LoginBloc>().add(
             LoginAdminEvent(email: email, password: password),
           );
-        } else {
+        } else if (email.isNotEmpty && password.isNotEmpty) {
           context.read<LoginBloc>().add(
             LoginEmployeeEvent(email: email, password: password),
           );
+        } else {
+          _showErrorMessage(context, 'Invalid email or role');
         }
       },
       child: Text(
@@ -106,6 +116,10 @@ class LoginScreen extends StatelessWidget {
     ScaffoldMessenger.of(context).showSnackBar(
       SnackBar(content: Text(error)),
     );
-    print(error);
+  }
+
+  void dispose() {
+    emailController.dispose();
+    passwordController.dispose();
   }
 }

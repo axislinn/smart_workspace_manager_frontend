@@ -3,6 +3,7 @@ class Employee {
   final String name;
   final String email;
   final String role;
+  final String token;
   final String department;
   final String phoneNumber;
   final DateTime createdAt;
@@ -13,6 +14,7 @@ class Employee {
     required this.name,
     required this.email,
     this.role = 'employee',
+    required this.token,
     required this.department,
     required this.phoneNumber,
     required this.createdAt,
@@ -25,6 +27,7 @@ class Employee {
       name: json['name'] ?? '',
       email: json['email'] ?? '',
       role: json['role'] ?? 'employee',
+      token: json['token'] ?? '',
       department: json['department'] ?? '',
       phoneNumber: json['phoneNumber'] ?? '',
       createdAt: json['createdAt'] != null
@@ -42,6 +45,7 @@ class Employee {
       'name': name,
       'email': email,
       'role': role,
+      'token': token,
       'department': department,
       'phoneNumber': phoneNumber,
       'createdAt': createdAt.toIso8601String(),

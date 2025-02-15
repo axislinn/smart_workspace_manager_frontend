@@ -3,7 +3,7 @@ import 'package:flutter/material.dart';
 class Loader extends StatelessWidget {
   final String? loadingMessage;
 
-  const Loader({Key? key, this.loadingMessage}) : super(key: key);
+  const Loader({super.key, this.loadingMessage});
 
   @override
   Widget build(BuildContext context) {
@@ -22,7 +22,7 @@ class Loader extends StatelessWidget {
           if ((loadingMessage ?? "").isNotEmpty) const SizedBox(height: 24),
           CircularProgressIndicator(
             valueColor: AlwaysStoppedAnimation<Color>(
-              Theme.of(context).colorScheme.onBackground,
+              Theme.of(context).colorScheme.onSurface,
             ),
           ),
         ],

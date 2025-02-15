@@ -163,6 +163,15 @@ class _SignUpScreenState extends State<SignUpScreen> {
     ScaffoldMessenger.of(context).showSnackBar(
       SnackBar(content: Text(error)),
     );
-    print(error);
+  }
+
+    @override
+    void dispose() {
+    emailController.dispose();
+    passwordController.dispose();
+    nameController.dispose();
+    phoneNumberController.dispose();
+    departmentController.dispose();
+    super.dispose();
   }
 }

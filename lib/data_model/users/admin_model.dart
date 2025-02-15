@@ -3,6 +3,7 @@ class Admin {
   final String name;
   final String email;
   final String role;
+  final String token;
   final String phoneNumber;
   final DateTime createdAt;
   final DateTime updatedAt;
@@ -12,6 +13,7 @@ class Admin {
     required this.name,
     required this.email,
     this.role = 'admin',
+    required this.token,
     required this.phoneNumber,
     required this.createdAt,
     required this.updatedAt,
@@ -23,6 +25,7 @@ class Admin {
       name: json['name'] ?? '',
       email: json['email'] ?? '',
       role: json['role'] ?? 'admin',
+      token: json['token'] ?? '',
       phoneNumber: json['phoneNumber'] ?? '',
      createdAt: json['createdAt'] != null
           ? DateTime.parse(json['createdAt'])
@@ -39,6 +42,7 @@ class Admin {
       'name': name,
       'email': email,
       'role': role,
+      'token': token,
       'phoneNumber': phoneNumber,
       'createdAt': createdAt.toIso8601String(),
       'updatedAt': updatedAt.toIso8601String(),

@@ -10,7 +10,7 @@ class LoginInitial extends LoginState {}
 class LoginLoading extends LoginState {}
 
 class LoginSuccess extends LoginState {
-  final dynamic user; // Can be Admin or Employee
+  final dynamic user;
   LoginSuccess(this.user);
 
   @override
