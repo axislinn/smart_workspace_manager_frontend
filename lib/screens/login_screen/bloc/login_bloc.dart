@@ -2,6 +2,7 @@ import 'package:smart_workspace_manager_frontend/screens/login_screen/utils/inde
 
 class LoginBloc extends Bloc<LoginEvent, LoginState> {
   final LoginRepository repository;
+  final FlutterSecureStorage storage = const FlutterSecureStorage(); // Secure storage instance
 
   LoginBloc({required this.repository}) : super(LoginInitial()) {
     on<LoginAdminEvent>(_onLoginAdmin);
@@ -16,6 +17,11 @@ class LoginBloc extends Bloc<LoginEvent, LoginState> {
         email: event.email,
         password: event.password,
       );
+
+      // Store token securely
+      await storage.write(key: 'token', value: admin.token);
+      await storage.write(key: 'role', value: 'admin');
+
       emit(LoginSuccess(admin));
     } catch (e) {
       emit(LoginFailure(e.toString()));
@@ -30,6 +36,11 @@ class LoginBloc extends Bloc<LoginEvent, LoginState> {
         email: event.email,
         password: event.password,
       );
+
+      // Store token securely
+      await storage.write(key: 'token', value: employee.token);
+      await storage.write(key: 'role', value: 'employee');
+
       emit(LoginSuccess(employee));
     } catch (e) {
       emit(LoginFailure(e.toString()));

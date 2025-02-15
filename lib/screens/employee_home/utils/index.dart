@@ -1,0 +1,1 @@
+export 'package:smart_workspace_manager_frontend/screens/drawer.dart';

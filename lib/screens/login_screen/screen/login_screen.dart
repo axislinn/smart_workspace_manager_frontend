@@ -1,6 +1,5 @@
 import 'package:smart_workspace_manager_frontend/screens/login_screen/utils/index.dart';
 
-
 class LoginScreen extends StatelessWidget {
   final TextEditingController emailController = TextEditingController();
   final TextEditingController passwordController = TextEditingController();
@@ -14,7 +13,7 @@ class LoginScreen extends StatelessWidget {
         listener: (context, state) {
           if (state is LoginSuccess) {
             final user = state.user;
-            // Navigate based on role after successful login
+            
             if (user.role == 'admin') {
               Navigator.pushReplacementNamed(context, adminHome);
             } else if (user.role == 'employee') {

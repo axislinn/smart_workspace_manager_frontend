@@ -10,3 +10,4 @@ export 'package:flutter/material.dart';
 export 'package:smart_workspace_manager_frontend/screens/login_screen/bloc/login_bloc.dart';
 export 'package:smart_workspace_manager_frontend/widgets/loader.dart';
 export 'package:smart_workspace_manager_frontend/utils/route_constants.dart';
+export 'package:flutter_secure_storage/flutter_secure_storage.dart';

@@ -15,6 +15,8 @@ class MyApp extends StatelessWidget {
     debugShowCheckedModeBanner: false,
     onGenerateRoute: generateRoute,
     initialRoute: splash,
+
+    //home: AppDrawer(userName: "idk", userEmail: "idk", userRole: "idk"),
     );
   }
 }
