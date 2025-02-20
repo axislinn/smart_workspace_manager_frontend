@@ -62,9 +62,9 @@ class _AppDrawerState extends State<AppDrawer> {
             title: const Text('Home'),
             onTap: () {
               if (role == 'admin') {
-                Navigator.pushReplacementNamed(context, adminHome);
+                Navigator.pushNamed(context, adminHome);
               } else {
-                Navigator.pushReplacementNamed(context, employeeHome);
+                Navigator.pushNamed(context, employeeHome);
               }
             },
           ),

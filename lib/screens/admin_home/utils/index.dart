@@ -1,1 +1,1 @@
-export 'package:smart_workspace_manager_frontend/screens/drawer.dart';
+export 'package:smart_workspace_manager_frontend/widgets/drawer.dart';

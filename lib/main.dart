@@ -12,12 +12,10 @@ class MyApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
+    showPerformanceOverlay: true,
     debugShowCheckedModeBanner: false,
     onGenerateRoute: generateRoute,
     initialRoute: splash,
-
-    //home: AppDrawer(userName: "idk", userEmail: "idk", userRole: "idk"),
     );
   }
 }
-
