@@ -1,6 +1,8 @@
 import 'package:smart_workspace_manager_frontend/screens/signup_screen/utils/index.dart';
 
 class SignUpScreen extends StatefulWidget {
+  const SignUpScreen({super.key});
+
   @override
   _SignUpScreenState createState() => _SignUpScreenState();
 }

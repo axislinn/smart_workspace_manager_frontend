@@ -7,7 +7,6 @@ import 'package:smart_workspace_manager_frontend/screens/splash_screen/screen/sp
 
 Route<dynamic> generateRoute(RouteSettings settings) {
   switch (settings.name) {
-
     case splash:
       return MaterialPageRoute(builder: (_) => SplashScreen());
 
@@ -24,16 +23,15 @@ Route<dynamic> generateRoute(RouteSettings settings) {
     case signUp:
       return MaterialPageRoute(
           builder: (_) => BlocProvider(
-          create: (context) => SignUpBloc(
-            repository: SignUpRepository()),
-          child: SignUpScreen(),
+                create: (context) => SignUpBloc(repository: SignUpRepository()),
+                child: SignUpScreen(),
               ));
 
-      case adminHome:
-    return MaterialPageRoute(builder: (_) => AdminHome());
+    case adminHome:
+      return MaterialPageRoute(builder: (_) => AdminHome());
 
-      case employeeHome:
-    return MaterialPageRoute(builder: (_) => EmployeeHome());
+    case employeeHome:
+      return MaterialPageRoute(builder: (_) => EmployeeHome());
 
     default:
       return MaterialPageRoute(
